@@ -1,0 +1,263 @@
+
+:root {
+  color-scheme: dark;
+  --background: #101827;
+  --panel: #172337;
+  --display: #101b2d;
+  --key: #25344a;
+  --key-hover: #344861;
+  --purple: #7650d9;
+  --purple-hover: #8b68ef;
+  --blue: #2867b2;
+  --green: #18a875;
+  --red: #d44b55;
+  --text: #f4f7fc;
+  --muted: #91a1b8;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 28px 16px;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at top, #243754 0%, transparent 58%),
+    var(--background);
+}
+
+.app {
+  width: min(100%, 440px);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 22px;
+}
+
+.app-icon {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+}
+
+.app-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(20px, 5vw, 25px);
+  letter-spacing: -0.7px;
+}
+
+.app-header p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.calculator {
+  padding: 16px;
+  border: 1px solid #314158;
+  border-radius: 24px;
+  background: var(--panel);
+  box-shadow: 0 24px 70px #0005;
+}
+
+.display {
+  min-width: 0;
+  min-height: 125px;
+  margin-bottom: 15px;
+  padding: 17px 15px 12px;
+  border: 1px solid #27364b;
+  border-radius: 15px;
+  background: var(--display);
+}
+
+#expression {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #c6b5ff;
+  font: 16px/1.6 "SFMono-Regular", Consolas, monospace;
+  text-align: right;
+  caret-color: #b59bff;
+}
+
+#expression::placeholder {
+  color: #64748b;
+}
+
+.result {
+  overflow-wrap: anywhere;
+  min-height: 42px;
+  margin-top: 9px;
+  color: var(--text);
+  font-size: clamp(27px, 7vw, 36px);
+  font-weight: 700;
+  text-align: right;
+  letter-spacing: -1px;
+}
+
+.status {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  text-align: right;
+  letter-spacing: 1.2px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.key {
+  min-width: 0;
+  min-height: 54px;
+  padding: 8px 2px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--key);
+  color: var(--text);
+  font: 600 17px/1.2 inherit;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 120ms, transform 120ms, border-color 120ms;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key:focus-visible {
+  outline: 2px solid #c6b5ff;
+  outline-offset: 2px;
+}
+
+.function {
+  background: #51369a;
+  font-size: 14px;
+}
+
+.function:hover,
+.constant:hover {
+  background: var(--purple-hover);
+}
+
+.constant {
+  background: #51369a;
+}
+
+.operator {
+  background: #234f83;
+}
+
+.operator:hover {
+  background: var(--blue);
+}
+
+.utility {
+  background: #34465e;
+}
+
+.clear {
+  background: #923a48;
+}
+
+.clear:hover {
+  background: var(--red);
+}
+
+.equals {
+  background: var(--green);
+  font-size: 23px;
+}
+
+.equals:hover {
+  background: #20c18a;
+}
+
+.zero {
+  grid-column: span 1;
+}
+
+.calculator-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.keyboard-help {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+kbd {
+  padding: 3px 6px;
+  border: 1px solid #34445b;
+  border-radius: 5px;
+  background: #1b293d;
+  color: #d5deeb;
+  font: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 360px) {
+  body {
+    padding: 16px 8px;
+  }
+
+  .calculator {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .keypad {
+    gap: 5px;
+  }
+
+  .key {
+    min-height: 48px;
+    border-radius: 9px;
+  }
+}

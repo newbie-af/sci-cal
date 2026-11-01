@@ -1,2 +1,1 @@
-Deguzman, Jamesson - ITE 260
-Solo
+Deguzman, Jamesson - ITE 260 / Solo
